@@ -36,6 +36,8 @@
             </div>
         </div>
     </div>
+    <?php include_once 'resource/components/about.php'; ?>
+    <?php include_once 'resource/components/games.php'; ?>
 </body>
 
 </html>
