@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="./public/css/main.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="tailwind.config.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+    <link rel="icon" href="./public/images/icon.png" type="image/png">
     <style>
         @keyframes fadeIn {
             from {
@@ -50,12 +50,13 @@
 </head>
 
 <body>
+    
     <header x-data="{ isOpen: false }"
         x-init="$watch('isOpen', value => value && setTimeout(() => $refs.mobileMenu.classList.add('animate-fadeIn'), 50))"
         class="bg-black bg-opacity-40 text-white p-4 md:p-8 fixed top-0 w-full z-50">
         <div class="m-auto max-w-[1200px] flex justify-between items-center">
             <a href="index.php" class="text-xl font-bold transition-transform duration-300 hover:scale-105">
-                <img src="./public/images/logo.png" alt="logo" class="w-32 md:w-40">
+                <img src="./public/images/logo.gif" alt="logo" class="w-32 md:w-40">
             </a>
 
             <!-- Mobile menu button -->
@@ -67,17 +68,17 @@
             <div class="hidden md:flex gap-8">
                 <a href="index.php"
                     class="hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">Home</a>
-                <a href="#"
+                <a href="index.php#about"
                     class="hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">About</a>
-                <a href="#"
+                <a href="contact.php"
                     class="hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">Contact</a>
             </div>
 
             <div class="hidden md:block">
-                <button
-                    class="bg-green-500 font-bold text-white text-black px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center hover:shadow-lg transform hover:-translate-y-1">
-                    Account <i class="fa-solid fa-user"></i>
-                </button>
+                <a href="login.php"><button
+                        class="bg-green-500 font-bold text-white text-black px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center hover:shadow-lg transform hover:-translate-y-1">
+                        Account <i class="fa-solid fa-user"></i>
+                    </button></a>
             </div>
         </div>
 
@@ -90,9 +91,9 @@
             x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden mt-4">
             <a href="index.php"
                 class="block py-2 hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">Home</a>
-            <a href="#"
+            <a href="index.php#about"
                 class="block py-2 hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">About</a>
-            <a href="#"
+            <a href="contact.php"
                 class="block py-2 hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">Contact</a>
             <button
                 class="mt-4 w-full bg-green-500 font-bold text-white text-black px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center justify-center hover:shadow-lg transform hover:-translate-y-1">

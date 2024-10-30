@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win Zone - Earn Coins Online</title>
+    <title>WinZoneClub &copy; - Earn Coins Online</title>
 </head>
 
 <body>
@@ -38,6 +38,7 @@
     </div>
     <?php include_once 'resource/components/about.php'; ?>
     <?php include_once 'resource/components/games.php'; ?>
+    <?php include_once 'resource/components/footer.php'; ?>
 </body>
 
 </html>
