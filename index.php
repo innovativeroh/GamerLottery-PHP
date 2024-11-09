@@ -8,7 +8,7 @@
     <title>WinZoneClub &copy; - Earn Coins Online</title>
 </head>
 
-<body>
+<body class="bg-black">
     <div class="bg-hero-pattern bg-cover bg-center bg-no-repeat min-h-screen pt-16 sm:pt-20">
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] w-full flex flex-col md:flex-row items-center justify-center py-12 md:py-0">
