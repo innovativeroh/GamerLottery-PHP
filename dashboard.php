@@ -15,65 +15,93 @@ if (!isLoggedIn()) {
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-zinc-950 text-white font-sans">
-    <div class="max-w-[1200px] mt-20 lg:mt-40 m-auto p-5">
-        <header class="mb-8">
-            <h1 class="text-3xl font-bold">Welcome, +91 <?= $mobile ?>!</h1>
-            <p class="text-zinc-400">Here's your account overview</p>
+<body class="bg-gradient-to-br from-zinc-900 to-zinc-950 text-white font-sans min-h-screen">
+    <div class="max-w-[1200px] mt-20 lg:mt-32 m-auto p-5">
+        <!-- Improved Header Section -->
+        <header class="mb-12">
+            <div class="flex items-center gap-4 mb-2">
+                <div class="w-12 h-12 bg-gradient-to-br from-lime-400 to-lime-600 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold">Welcome, +91 <?= $mobile ?>!</h1>
+                    <p class="text-zinc-400">Here's your account overview</p>
+                </div>
+            </div>
         </header>
 
-        <!-- Wallet Balance Section -->
-        <section class="mb-8">
-            <div
-                class="p-6 bg-gradient-to-t from-lime-500 to-lime-900 text-center rounded-lg shadow-md flex items-center justify-center">
-                <div>
-                    <h2 class="text-xl font-semibold Barlow">Your WinZone Wallet</h2>
-                    <p class="text-4xl font-bold text-white">0.00</p>
+        <!-- Enhanced Wallet Balance Section -->
+        <section class="mb-12">
+            <div class="p-8 bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 rounded-2xl shadow-xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-xl font-semibold Barlow mb-2">Your WinZone Wallet</h2>
+                    <p class="text-5xl font-bold text-white mb-4">₹0.00</p>
+                    <div class="flex gap-4">
+                        <button class="bg-white text-green-700 px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+                            Add Money
+                        </button>
+                        <button class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+                            Withdraw
+                        </button>
+                    </div>
                 </div>
+                <!-- Decorative Elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-lime-400 rounded-full opacity-20 transform translate-x-20 -translate-y-20"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-green-700 rounded-full opacity-20 transform -translate-x-16 translate-y-16"></div>
             </div>
         </section>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 bg-white rounded-xl">
-            <div
-                class="flex-[1] flex border-[1px] border-zinc-300 justify-between items-center bg-white rounded-lg shadow-xl text-black p-4">
-                <div class="flex-[1]">
-                    <i class="fa-solid fa-money-bill-transfer p-4 px-3.5 bg-zinc-100 rounded-full text-zinc-400"></i>
+
+        <!-- Improved Stats Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Unplayed Balance Card -->
+            <div class="bg-white rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-4 bg-lime-100 rounded-xl">
+                        <i class="fa-solid fa-wallet text-lime-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-zinc-600 text-sm font-medium">Unplayed Balance</p>
+                        <p class="text-3xl font-bold text-black">₹20.00</p>
+                    </div>
                 </div>
-                <div class="flex-[2] flex flex-col gap-1">
-                    <span class="text-xs font-semibold text-gray-600">Unplayed</span>
-                    <p class="font-bold text-black Barlow text-2xl">$20</p>
-                </div>
-                <button
-                    class="1 text-white font-bold border-[2px] border-lime-400 bg-gradient-to-t from-green-700 to-lime-400 italic py-2 px-4 rounded-lg">ADD
-                    CASH</button>
+                <button class="w-full bg-gradient-to-r from-lime-500 to-green-600 text-white font-bold py-3 px-6 rounded-xl hover:opacity-90 transition-all">
+                    ADD CASH
+                </button>
             </div>
-            <div
-                class="flex-[1] flex border-[1px] border-zinc-300 justify-between items-center bg-white rounded-lg shadow-xl text-black p-4">
-                <div class="flex-[1]">
-                    <i class="fa-solid fa-money-bill-transfer p-4 px-3.5 bg-zinc-100 rounded-full text-zinc-400"></i>
+
+            <!-- Bonus Card -->
+            <div class="bg-white rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-4 bg-orange-100 rounded-xl">
+                        <i class="fa-solid fa-gift text-orange-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-zinc-600 text-sm font-medium">Bonus Balance</p>
+                        <p class="text-3xl font-bold text-black">₹0.00</p>
+                    </div>
                 </div>
-                <div class="flex-[2] flex flex-col gap-1">
-                    <span class="text-xs font-semibold text-gray-600">Bonus</span>
-                    <p class="font-bold text-black Barlow text-2xl">0</p>
-                </div>
-                <button class="text-black font-bold border-[2px] border-black bg-white italic py-2 px-4 rounded-lg">EARN
-                    BONUS</button>
+                <button class="w-full border-2 border-black text-black font-bold py-3 px-6 rounded-xl hover:bg-black hover:text-white transition-all">
+                    EARN BONUS
+                </button>
             </div>
-            <div
-                class="flex-[1] flex border-[1px] border-zinc-300 justify-between items-center bg-white rounded-lg shadow-xl text-black p-4">
-                <div class="flex-[1]">
-                    <i class="fa-solid fa-money-bill-transfer p-4 px-3.5 bg-zinc-100 rounded-full text-zinc-400"></i>
+
+            <!-- Winnings Card -->
+            <div class="bg-white rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-4 bg-purple-100 rounded-xl">
+                        <i class="fa-solid fa-trophy text-purple-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-zinc-600 text-sm font-medium">Total Winnings</p>
+                        <p class="text-3xl font-bold text-black">₹0.00</p>
+                    </div>
                 </div>
-                <div class="flex-[2] flex flex-col gap-1">
-                    <span class="text-xs font-semibold text-gray-600">Winnings</span>
-                    <p class="font-bold text-black Barlow text-2xl">0</p>
-                </div>
-                <button
-                    class="text-black font-bold border-[2px] border-black bg-white italic py-2 px-4 rounded-lg flex justify-between items-center gap-2">
+                <button class="w-full border-2 border-black text-black font-bold py-3 px-6 rounded-xl hover:bg-black hover:text-white transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-lock"></i>
-                    WITHDRAW</button>
+                    WITHDRAW
+                </button>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
