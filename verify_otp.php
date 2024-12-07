@@ -3,6 +3,7 @@ header('Content-Type: application/json');
 include_once('resource/components/connection.php');
 
 $entered_otp = $_POST['otp'] ?? '';
+$full_name = $_POST['full_name'] ?? '';
 
 try {
     // Verify OTP
@@ -23,16 +24,16 @@ try {
             $expire_stmt->execute();
             $expire_stmt->close();
 
-            // Update user's mobile verification status
-            $verify_stmt = $conn->prepare("UPDATE `users` SET `mobile_verify` = 1 WHERE `id` = ?");
-            $verify_stmt->bind_param("i", $user_id);
+            // Update user's mobile verification status and full name
+            $verify_stmt = $conn->prepare("UPDATE `users` SET `mobile_verify` = 1, `full_name` = ? WHERE `id` = ?");
+            $verify_stmt->bind_param("si", $full_name, $user_id);
             $verify_stmt->execute();
             $verify_stmt->close();
 
             // Commit the transaction
             $conn->commit();
             
-            echo json_encode(['success' => true, 'message' => 'OTP verified successfully']);
+            echo json_encode(['success' => true, 'message' => 'Mobile verified successfully!']);
         } catch (Exception $e) {
             // An error occurred; rollback the transaction
             $conn->rollback();

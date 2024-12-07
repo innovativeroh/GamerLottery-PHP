@@ -41,11 +41,11 @@
         .neon-text {
             font-family: 'Orbitron', sans-serif;
             font-size: 4rem;
-            background: linear-gradient(to right, var(--primary-dark), var(--primary), var(--primary-light));
+            background: linear-gradient(to right, #fbbf24, #f59e0b, #d97706);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
             margin-bottom: 1.5rem;
         }
 
@@ -59,7 +59,7 @@
         .card-3d {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(34, 197, 94, 0.2);
+            border: 1px solid #fbbf24;
             border-radius: 1rem;
             padding: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -71,7 +71,7 @@
 
         .card-3d:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
         }
 
         .stats-grid {
@@ -83,7 +83,7 @@
 
         .stat-card {
             background: var(--card-bg);
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #f59e0b;
             padding: 1.5rem;
             border-radius: 1rem;
             text-align: center;
@@ -92,7 +92,7 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: bold;
-            color: var(--primary);
+            color: #fbbf24;
             margin-bottom: 0.5rem;
         }
 
@@ -106,11 +106,11 @@
         .image-container img {
             width: 100%;
             border-radius: 1rem;
-            box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
         }
 
         .cyber-button {
-            background: var(--primary);
+            background: linear-gradient(to right, #fbbf24, #d97706);
             color: var(--bg-dark);
             font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
@@ -126,9 +126,9 @@
         }
 
         .cyber-button:hover {
-            background: var(--primary-light);
+            background: linear-gradient(to right, #f59e0b, #b45309);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.4);
         }
 
         @media (max-width: 768px) {
@@ -150,24 +150,24 @@
     <div id="particles-js"></div>
     <div class="content-wrapper">
         <section class="hero-section">
-            <h1 class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-800 text-4xl Barlow sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-16 animate-fade-in">Win Zone</h1>
+            <h1 class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-800 text-4xl Barlow sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-16 animate-fade-in">Win Zone Club</h1>
             <p class="subtitle">Experience the thrill of real-time betting games</p>
         </section>
 
         <div class="features-grid">
             <div class="card-3d p-6 rounded-lg game-feature">
                 <i class="fas fa-dice icon"></i>
-                <h3 class="text-green-500 text-xl font-bold mb-3">Ludo Masters</h3>
+                <h3 class="text-yellow-500 text-xl font-bold mb-3">Ludo Masters</h3>
                 <p class="text-gray-300">Challenge players worldwide in real-time Ludo matches.</p>
             </div>
             <div class="card-3d p-6 rounded-lg game-feature">
                 <i class="fas fa-plane icon"></i>
-                <h3 class="text-green-500 text-xl font-bold mb-3">Aviator</h3>
+                <h3 class="text-yellow-500 text-xl font-bold mb-3">Aviator</h3>
                 <p class="text-gray-300">Test your timing and multiply your winnings.</p>
             </div>
             <div class="card-3d p-6 rounded-lg game-feature">
                 <i class="fas fa-bolt icon"></i>
-                <h3 class="text-green-500 text-xl font-bold mb-3">Instant Games</h3>
+                <h3 class="text-yellow-500 text-xl font-bold mb-3">Instant Games</h3>
                 <p class="text-gray-300">Quick games with immediate results and payouts.</p>
             </div>
         </div>
@@ -178,19 +178,19 @@
 
         <div class="stats-grid">
             <div class="card-3d p-4 rounded-lg text-center stat-card">
-                <div class="text-green-500 text-3xl font-bold">100K+</div>
+                <div class="text-yellow-500 text-3xl font-bold">100K+</div>
                 <div class="text-sm text-gray-400">Active Players</div>
             </div>
             <div class="card-3d p-4 rounded-lg text-center stat-card">
-                <div class="text-green-500 text-3xl font-bold">₹1M+</div>
+                <div class="text-yellow-500 text-3xl font-bold">₹1M+</div>
                 <div class="text-sm text-gray-400">Daily Payouts</div>
             </div>
             <div class="card-3d p-4 rounded-lg text-center stat-card">
-                <div class="text-green-500 text-3xl font-bold">10+</div>
+                <div class="text-yellow-500 text-3xl font-bold">10+</div>
                 <div class="text-sm text-gray-400">Game Modes</div>
             </div>
             <div class="card-3d p-4 rounded-lg text-center stat-card">
-                <div class="text-green-500 text-3xl font-bold">24/7</div>
+                <div class="text-yellow-500 text-3xl font-bold">24/7</div>
                 <div class="text-sm text-gray-400">Support</div>
             </div>
         </div>
@@ -204,7 +204,7 @@
         particlesJS('particles-js', {
             particles: {
                 number: { value: 50 },
-                color: { value: '#22c55e' },
+                color: { value: '#fbbf24' },
                 shape: { type: 'circle' },
                 opacity: {
                     value: 0.5,

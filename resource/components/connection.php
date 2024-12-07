@@ -35,6 +35,12 @@ if (isLoggedIn()) {
     $result = mysqli_stmt_get_result($stmt);
     if ($row = mysqli_fetch_assoc($result)) {
         $mobile = $row['mobile'];
+        $full_name = $row['full_name'];
+        if($full_name == "") {
+            $final_name = "User";
+        } else {
+            $final_name = $full_name;
+        }
         $user_id = $row['id'];
         $mobile_verify = $row['mobile_verify'];
     }

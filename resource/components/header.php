@@ -64,7 +64,7 @@ if (isLoggedIn()) {
 </head>
 
 <body>
-    <header x-data="{ isOpen: false }"
+    <header x-data="{ isOpen: false, accountDropdown: false }"
         x-init="$watch('isOpen', value => value && setTimeout(() => $refs.mobileMenu.classList.add('animate-fadeIn'), 50))"
         class="bg-black bg-opacity-40 text-white p-4 md:p-8 fixed top-0 w-full z-50">
         <div class="m-auto max-w-[1200px] flex justify-between items-center">
@@ -82,43 +82,82 @@ if (isLoggedIn()) {
                 <a href="contact.php"
                     class="hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">Contact</a>
             </div>
-            <div class="hidden md:block flex flex-row">
-                <a href="login.php" class="inline-block mr-4">
-                    <button
-                        class="bg-green-500 font-bold text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center hover:shadow-lg transform hover:-translate-y-1">
-                        Account <i class="fa-solid fa-user"></i>
-                    </button>
-                </a>
-                <?php
-                if (isLoggedIn()) {
-                    ?>
-                    <a href="login.php" class="inline-block">
-                        <button
-                            class="bg-black border-[2px] font-bold text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center hover:shadow-lg transform hover:-translate-y-1">
-                            <i class="fa-solid fa-wallet"></i> 0.00
+            <div class="hidden md:flex items-center gap-4">
+                <?php if (!isLoggedIn()) { ?>
+                    <a href="login.php">
+                        <button class="bg-green-500 font-bold text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center hover:shadow-lg transform hover:-translate-y-1">
+                            Account <i class="fa-solid fa-user"></i>
                         </button>
                     </a>
-                    <?php
-                }
-                ?>
+                <?php } else { ?>
+                    <button class="bg-black border-[2px] font-bold text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center hover:shadow-lg transform hover:-translate-y-1">
+                        <i class="fa-solid fa-wallet"></i> 0.00
+                    </button>
+                    <div class="relative" @click.away="accountDropdown = false">
+                        <button @click="accountDropdown = !accountDropdown"
+                            class="bg-green-500 font-bold text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center hover:shadow-lg">
+                            Account <i class="fa-solid fa-chevron-down ml-1"></i>
+                        </button>
+                        <div x-show="accountDropdown"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 transform -translate-y-2"
+                            x-transition:enter-end="opacity-100 transform translate-y-0"
+                            class="absolute right-0 mt-2 w-48 bg-zinc-900 rounded-lg shadow-xl py-2">
+                            <a href="dashboard.php" class="block px-4 py-2 text-white hover:bg-green-500 transition-colors duration-200">
+                                <i class="fa-solid fa-gauge-high mr-2"></i> Dashboard
+                            </a>
+                            <a href="bank_verification.php" class="block px-4 py-2 text-white hover:bg-green-500 transition-colors duration-200">
+                                <i class="fa-solid fa-user mr-2"></i> Bank Account
+                            </a>
+                            <hr class="my-2 border-zinc-700">
+                            <a href="logout.php" class="block px-4 py-2 text-red-400 hover:bg-red-500 hover:text-white transition-colors duration-200">
+                                <i class="fa-solid fa-sign-out-alt mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
-        <div x-show="isOpen" x-ref="mobileMenu" x-transition:enter="transition ease-out duration-300"
+        <div x-show="isOpen" x-ref="mobileMenu"
+            x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 transform -translate-y-2"
             x-transition:enter-end="opacity-100 transform translate-y-0"
             x-transition:leave="transition ease-in duration-300"
             x-transition:leave-start="opacity-100 transform translate-y-0"
-            x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden mt-4">
-            <a href="index.php"
-                class="block py-2 hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">Home</a>
-            <a href="index.php#about"
-                class="block py-2 hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">About</a>
-            <a href="contact.php"
-                class="block py-2 hover:text-green-500 transition-all duration-300 font-semibold uppercase Barlow hover-underline">Contact</a>
-            <a href="login.php"
-                class="mt-4 w-full bg-green-500 font-bold text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center justify-center hover:shadow-lg transform hover:-translate-y-1">
-                Account <i class="fa-solid fa-user"></i>
-            </a>
+            x-transition:leave-end="opacity-0 transform -translate-y-2"
+            class="md:hidden mt-4 bg-zinc-900 rounded-lg p-4">
+            <nav class="space-y-4">
+                <a href="index.php" class="block hover:text-green-500 transition-all duration-300 font-semibold uppercase">
+                    <i class="fa-solid fa-home mr-2"></i> Home
+                </a>
+                <a href="index.php#about" class="block hover:text-green-500 transition-all duration-300 font-semibold uppercase">
+                    <i class="fa-solid fa-info-circle mr-2"></i> About
+                </a>
+                <a href="contact.php" class="block hover:text-green-500 transition-all duration-300 font-semibold uppercase">
+                    <i class="fa-solid fa-envelope mr-2"></i> Contact
+                </a>
+            </nav>
+            <?php if (isLoggedIn()) { ?>
+                <div class="mt-4 pt-4 border-t border-zinc-700">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-400">Balance</span>
+                        <span class="font-bold"><i class="fa-solid fa-wallet mr-2"></i> 0.00</span>
+                    </div>
+                    <a href="dashboard.php" class="block py-2 hover:text-green-500 transition-all duration-300">
+                        <i class="fa-solid fa-gauge-high mr-2"></i> Dashboard
+                    </a>
+                    <a href="bank_verification.php" class="block py-2 hover:text-green-500 transition-all duration-300">
+                        <i class="fa-solid fa-user mr-2"></i> Bank Verification
+                    </a>
+                    <a href="logout.php" class="block py-2 text-red-400 hover:text-red-500 transition-all duration-300">
+                        <i class="fa-solid fa-sign-out-alt mr-2"></i> Logout
+                    </a>
+                </div>
+            <?php } else { ?>
+                <a href="login.php" class="mt-4 w-full bg-green-500 font-bold text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300 flex gap-2 items-center justify-center">
+                    Account <i class="fa-solid fa-user"></i>
+                </a>
+            <?php } ?>
         </div>
     </header>
 
@@ -130,6 +169,11 @@ if (isLoggedIn()) {
                 <p class="mb-4 text-white">We will send a verification code to your <span class="font-semibold">+91
                         <?php echo $user_data['mobile']; ?></span>. Please enter it below to verify your account.</p>
                 <form id="otpForm">
+                    <div class="mb-4">
+                        <label for="full_name" class="block text-white text-sm font-bold mb-2">Full Name</label>
+                        <input type="text" id="full_name" name="full_name"
+                            class="w-full p-2 border bg-black border-black rounded text-white" required>
+                    </div>
                     <div class="mb-4">
                         <label for="verification_code" class="block text-white text-sm font-bold mb-2">Verification
                             Code</label>
@@ -168,10 +212,15 @@ if (isLoggedIn()) {
             $('#otpForm').on('submit', function (e) {
                 e.preventDefault();
                 var enteredOtp = $('#verification_code').val();
+                var fullName = $('#full_name').val();
+                
                 $.ajax({
                     url: 'verify_otp.php',
                     method: 'POST',
-                    data: { otp: enteredOtp },
+                    data: { 
+                        otp: enteredOtp,
+                        full_name: fullName 
+                    },
                     dataType: 'json',
                     success: function (response) {
                         showMessage(response.success ? 'success' : 'error', response.message);

@@ -43,11 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Mobile number doesn't exist, register new user
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $mobile_verify = 0;
+            $master = 0; // Default value for master
+            $permissions = 0; // Default value for permissions
             $sign_up_date = date('Y-m-d H:i:s');
             $ip_address = $_SERVER['REMOTE_ADDR'];
 
-            $insert_stmt = $conn->prepare("INSERT INTO users (mobile, mobile_verify, password, sign_up_date, ip_address) VALUES (?, ?, ?, ?, ?)");
-            $insert_stmt->bind_param("sisss", $mobile, $mobile_verify, $hashed_password, $sign_up_date, $ip_address);
+            $insert_stmt = $conn->prepare("INSERT INTO users (mobile, mobile_verify, password, master, permissions, sign_up_date, ip_address) 
+                                          VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $insert_stmt->bind_param("sisiiss", $mobile, $mobile_verify, $hashed_password, $master, $permissions, $sign_up_date, $ip_address);
 
             if ($insert_stmt->execute()) {
                 $new_user_id = $insert_stmt->insert_id;
