@@ -170,9 +170,8 @@ if (isLoggedIn()) {
                         <?php echo $user_data['mobile']; ?></span>. Please enter it below to verify your account.</p>
                 <form id="otpForm">
                     <div class="mb-4">
-                        <label for="full_name" class="block text-white text-sm font-bold mb-2">Full Name</label>
-                        <input type="text" id="full_name" name="full_name"
-                            class="w-full p-2 border bg-black border-black rounded text-white" required>
+                        <!-- <label for="full_name" class="block text-white text-sm font-bold mb-2">Full Name</label> -->
+                        <!-- <input type="text" id="full_name" name="full_name" class="w-full p-2 border bg-black border-black rounded text-white" required> -->
                     </div>
                     <div class="mb-4">
                         <label for="verification_code" class="block text-white text-sm font-bold mb-2">Verification
@@ -219,7 +218,7 @@ if (isLoggedIn()) {
                     method: 'POST',
                     data: { 
                         otp: enteredOtp,
-                        full_name: fullName 
+                        // full_name: fullName
                     },
                     dataType: 'json',
                     success: function (response) {

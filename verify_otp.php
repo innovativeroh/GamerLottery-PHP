@@ -24,9 +24,9 @@ try {
             $expire_stmt->execute();
             $expire_stmt->close();
 
-            // Update user's mobile verification status and full name
-            $verify_stmt = $conn->prepare("UPDATE `users` SET `mobile_verify` = 1, `full_name` = ? WHERE `id` = ?");
-            $verify_stmt->bind_param("si", $full_name, $user_id);
+            // Update user's mobile verification status
+            $verify_stmt = $conn->prepare("UPDATE `users` SET `mobile_verify` = 1 WHERE `id` = ?");
+            $verify_stmt->bind_param("i", $user_id);
             $verify_stmt->execute();
             $verify_stmt->close();
 

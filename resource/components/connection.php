@@ -21,7 +21,8 @@ date_default_timezone_set("Asia/Calcutta");
 @session_start();
 
 // Function to check if user is logged in
-function isLoggedIn() {
+function isLoggedIn()
+{
     return isset($_SESSION['user_id']);
 }
 
@@ -36,12 +37,13 @@ if (isLoggedIn()) {
     if ($row = mysqli_fetch_assoc($result)) {
         $mobile = $row['mobile'];
         $full_name = $row['full_name'];
-        if($full_name == "") {
+        if ($full_name == "") {
             $final_name = "User";
         } else {
             $final_name = $full_name;
         }
         $user_id = $row['id'];
+        $reference_code = $row['refer'];
         $mobile_verify = $row['mobile_verify'];
     }
     mysqli_stmt_close($stmt);

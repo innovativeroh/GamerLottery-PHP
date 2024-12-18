@@ -54,6 +54,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($insert_stmt->execute()) {
                 $new_user_id = $insert_stmt->insert_id;
+
+                // Insert into wallet with a balance of 50
+                $wallet_stmt = $conn->prepare("INSERT INTO wallet (userId, balance, created_at) VALUES (?, ?, ?)");
+                $balance = 50; // Set balance to 50
+                $created_at = date('Y-m-d H:i:s');
+                $wallet_stmt->bind_param("ids", $new_user_id, $balance, $created_at);
+                $wallet_stmt->execute(); // Execute the wallet insertion
+
+                // Insert into transactions
+                $transaction_stmt = $conn->prepare("INSERT INTO transactions (userId, type, amount, date) VALUES (?, ?, ?, ?)");
+                $type = 1; // Transaction type
+                $amount = 50; // Transaction amount
+                $date = date('Y-m-d H:i:s'); // Current date
+                $transaction_stmt->bind_param("iids", $new_user_id, $type, $amount, $date);
+                $transaction_stmt->execute(); // Execute the transaction insertion
+
                 // Registration successful, log in the new user
                 $_SESSION['user_id'] = $new_user_id;
                 $_SESSION['mobile_verify'] = 0;
