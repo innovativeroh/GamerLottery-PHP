@@ -71,13 +71,6 @@ if (isset($_SESSION['username'])) {
                                 $_SESSION['id'] = $id_login;
                                 $_SESSION['username'] = $username_login;
                                 $_SESSION['password'] = $password_login;
-                                
-                                // Fetch pending bank verifications
-                                $bank_query = "SELECT u.email, b.* FROM bank_details b 
-                                               JOIN users u ON b.user_id = u.id 
-                                               WHERE b.isVerified = 0 OR b.isVerified IS NULL";
-                                $_SESSION['pending_verifications'] = mysqli_query($conn, $bank_query);
-                                
                                 echo "<meta http-equiv=\"refresh\" content=\"0; url=dashboard.php\">";
                                 exit();
                             }

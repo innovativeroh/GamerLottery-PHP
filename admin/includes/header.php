@@ -39,9 +39,13 @@
                 class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 mb-4">
                 <i class="bi bi-people-fill pr-2"></i> Users
             </a>
-            <a href="Wallet_Management.php"
+            <a href="wallets.php"
                 class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 mb-4">
                 <i class="bi bi-wallet2 pr-2"></i> Wallet Management
+            </a>
+            <a href="transactions.php"
+                class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 mb-4">
+                <i class="bi bi-wallet2 pr-2"></i> Transactions
             </a>
             <a href="logout.php"
                 class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 mb-4">
