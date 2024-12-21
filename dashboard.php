@@ -67,7 +67,7 @@ if ($wallet_result->num_rows > 0) {
                     </div>
                     <p class="text-5xl font-bold text-white mb-4">₹<?= number_format($wallet_balance, 2); ?></p>
                     <div class="flex gap-4">
-                        <a href="add_money.php" 
+                        <a href="add-money.php" 
                            class="bg-white text-green-700 px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all flex items-center gap-2">
                             <i class="fas fa-plus"></i> Add Money
                         </a>
